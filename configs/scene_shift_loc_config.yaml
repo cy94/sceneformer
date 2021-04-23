@@ -1,0 +1,79 @@
+data:
+  # path to pickled bedroom
+  data_path: /shared/data/new_room_data/living_new_multi_img
+  out_path:  tests/data/scene_outputs
+  list_path: None
+
+model:
+  cat:
+    shape_cond: True
+    text_cond : False
+#    bedroom
+#    start_token: 52
+#    stop_token: 51
+#    pad_token: 50
+#    living
+    start_token: 41
+    stop_token: 40
+    pad_token: 39
+
+
+  # Todo: look up max_obj_num
+
+  coor:
+    shuffle: True
+    shape_cond: True
+    text_cond: False
+    start_token: 203
+    stop_token: 202
+    pad_token: 201
+
+  orient:
+    shape_cond: True
+    text_cond: False
+    start_token: 363
+    stop_token: 362
+    pad_token: 361
+
+  relation:
+    start_token: 4
+    stop_token: 3
+    pad_token: 2
+
+
+  dim:
+    shape_cond: True
+    start_token: 83
+    stop_token: 82
+    pad_token: 81
+
+  max_seq_len: 92
+
+  max_obj_num: 100
+  cat_num: 28
+  emb_dim: 1024
+  dim_fwd: 1024
+  num_heads: 8
+  num_blocks: 8
+  dropout: 0.3
+
+train:
+  aug:
+    jitter_list: [0., 0.02, 0.05, 0.07,  0.1, 0.12,  0.15, 0.17,  0.2, 0.22, 0.25, 0.27, 0.3]
+    rotation_list: [0 , 90,   180,  270]
+  batch_size: 32
+  epochs: 2000
+  lr: 0.0002
+  resume : null #lightning_logs/version_107/checkpoints/last.ckpt
+  total_len: 6300
+  train_len: 5700
+  l2: 0.001
+  lr_restart: 50000
+  warmup: 2
+
+test:
+  num_samples: 2
+  # sample outputs or choose deterministically?
+  probabilistic: False
+  model_file:  null #lightning_logs/version_226/checkpoints/last.ckpt
+  log_dir: lightning_logs/version_20/out/

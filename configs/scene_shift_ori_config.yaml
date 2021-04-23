@@ -1,0 +1,57 @@
+data:
+  # path to pickled bedroom
+  data_path: /shared/data/new_room_data/bedroom_new
+  out_path:  tests/data/scene_outputs
+  list_path: None
+
+model:
+  cat:
+    start_token: 52
+    stop_token: 51
+    pad_token: 50
+  # Todo: look up max_obj_num
+
+  coor:
+    start_token: 203
+    stop_token: 202
+    pad_token: 201
+
+
+  orient:
+    shape_cond: True
+    start_token: 363
+    stop_token: 362
+    pad_token: 361
+
+  relation:
+    start_token: 4
+    stop_token: 3
+    pad_token: 2
+
+
+  max_seq_len: 50
+  max_obj_num: 100
+  cat_num: 28
+  emb_dim: 256
+  dim_fwd: 256
+  num_heads: 8
+  num_blocks: 8
+  dropout: 0.3
+
+train:
+  batch_size: 32
+  epochs: 2000
+  lr: 0.0003
+  resume : null #lightning_logs/version_107/checkpoints/last.ckpt
+  total_len: 1142
+  train_len: 950
+  l2: 0.001
+  lr_restart: 40000
+  warmup: 80000
+
+test:
+  num_samples: 2
+  # sample outputs or choose deterministically?
+  probabilistic: False
+  model_file:  lightning_logs/version_226/checkpoints/last.ckpt
+  log_dir: lightning_logs/version_20/out/
