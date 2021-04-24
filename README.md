@@ -27,3 +27,15 @@ Configure the model paths in `scene_scripts/test.py` and then run
 ```
 python scene_scripts/test.py
 ```
+
+
+**If you find our work useful, please consider citing us:**
+
+```
+@article{wang2020sceneformer,
+  title={SceneFormer: Indoor Scene Generation with Transformers},
+  author={Wang, Xinpeng and Yeshwanth, Chandan and Nie{\ss}ner, Matthias},
+  journal={arXiv preprint arXiv:2012.09793},
+  year={2020}
+}
+```
